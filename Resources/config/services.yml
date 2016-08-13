@@ -1,0 +1,27 @@
+services:
+    rapid_connect.jwt.token_decoder:
+        class: Z38\Bundle\RapidConnectBundle\Jwt\TokenDecoder
+        arguments:
+            - '' # Issuer
+            - '' # Audience
+            - '' # Secret
+        public: false
+
+    rapid_connect.security.authentication.provider:
+        class: Z38\Bundle\RapidConnectBundle\Security\Authentication\Provider\RapidConnectProvider
+        arguments:
+            - '' # User Provider
+            - '' # Token Decoder
+        public: false
+
+    rapid_connect.security.authentication.listener:
+        class: Z38\Bundle\RapidConnectBundle\Security\Firewall\RapidConnectListener
+        parent: security.authentication.listener.abstract
+        abstract: true
+        public: false
+
+    rapid_connect.security.entry_point:
+        class: Z38\Bundle\RapidConnectBundle\Security\Http\EntryPoint\RapidConnectEntryPoint
+        arguments:
+            - '' # Login URL
+        public: false

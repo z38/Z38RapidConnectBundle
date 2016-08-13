@@ -1,0 +1,20 @@
+framework:
+    secret: test
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+
+security:
+    providers:
+        in_memory:
+            memory:
+                users:
+                    testuser:
+                        roles: ROLE_ADMIN
+    firewalls:
+        secured:
+            pattern: ^/
+            rapid_connect:
+                audience: "https://test.example.com"
+                login_url: "https://rapid.example.com/jwt/authnrequest/research/example"
+                secret: "testsecret"
+            stateless: true
