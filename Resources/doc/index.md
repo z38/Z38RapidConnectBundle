@@ -36,15 +36,15 @@ Configure your `security.yml` :
 ```yaml
 firewalls:
     main:
-        pattern: ^/
+        pattern:   ^/
         anonymous: true
         rapid_connect:
             callback_path: /auth/jwt
-            failure_path: /auth/failed
-            issuer: "https://rapid.aaf.edu.au"
-            audience: "%rapid_connect_audience%"
-            login_url: "%rapid_connect_url%"
-            secret: "%rapid_connect_secret%"
+            failure_path:  /auth/failed
+            issuer:        "https://rapid.aaf.edu.au"
+            audience:      "%rapid_connect_audience%"
+            login_url:     "%rapid_connect_url%"
+            secret:        "%rapid_connect_secret%"
 
 access_control:
     - { path: ^/auth/failed$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
